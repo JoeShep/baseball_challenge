@@ -20,12 +20,8 @@
 
 // ***************** declare global variables *******************
 
-    // define min and max number of teams
-    var minTeams = 4;
-    var maxTeams = 8;
-
     // create empty arrays
-    var league, schedule, scores = new Array();
+    // var league, schedule, scores = new Array();
 
 // *************** restore game and league data *****************
 
@@ -33,14 +29,11 @@
 
 // ****************** max teams alert message *******************
 
-    // insert maximum teams into alert
-    $("#maxTeams").text(maxTeams);
-
     // click event on create team link
     $("a[href='#teamModal']").on("click", function() {
 
       // show alert message if too many teams
-      if (league.length == maxTeams) {
+      if (league.length == 8) {
         $("#maxTeamsAlert").show();
       } else {
         $("#teamModal").modal("show");        
@@ -52,11 +45,6 @@
     $("#alertClose").click(function() {
       $("#maxTeamsAlert").hide();
     });
-
-// **************** create teams alert message *****************
-
-    // insert minimum teams into alert
-    $("#minTeams").text(minTeams);
 
 // ******************** initialize popovers ********************
 
@@ -125,11 +113,11 @@
         wins: 0,
         losses: 0,
         percentage: 0
+          
         },
         success: function (data) {
 
-          // update league array
-          league.push(data);
+         // var league=data
 
           // update standings table
           updateStandings();
@@ -214,6 +202,8 @@
       game = $(this).attr("data-game");
 
       // fill variables with team objects
+      //Joe: function that accesses league and defines schedule?
+
       if (league.length % 2 == 0) { // even number of teams
         homeTeam = league[schedule[week][game][0] - 1];
         awayTeam = league[schedule[week][game][1] - 1];
@@ -309,8 +299,8 @@
         dataType: "JSON",
         success: function (data) {
 
-          // fill scores array with data
-          scores = data;
+            // fill scores array with data
+            var scores = data; //Joe ??
 
           // retrieve league data from server
           $.ajax({
@@ -320,7 +310,7 @@
             success: function (data) {
 
               // fill league array with data
-              league = data;
+              // var league = data; //Joe ??
 
               // populate standings table
               updateStandings();
@@ -352,11 +342,11 @@
 
 // ******************** update standings ************************
 
-    function updateStandings() {
+    function updateStandings(data) {
 
       // create empty array
-      var sort = new Array();
-
+      var sort = [];
+      var league = data
       // fill array with league data
       for (var i = 0; i < league.length; i++) {
         sort.push(league[i]);
@@ -450,9 +440,8 @@
 // ******************** update schedule *************************
 
     function updateSchedule(activePane) {
-
       // determine schedule length
-      if (league.length < minTeams) {
+      if (league.length < 4) {
           $("#schedule ul").html("<li class='active'><a href='#pane0' data-toggle='tab'>Week 1</a></li>");
           $("#schedule .tab-content").html("<div id='pane0' class='tab-pane active'><table class='table table-striped'><thead><tr><th class='teams'>Teams</th><th class='final'>Final Score</th><th class='report'></th></tr></thead><tbody></tbody></table></div>");
       } else if (league.length == 4) {
@@ -464,7 +453,7 @@
       };
 
       // verify league has enough teams
-      if (league.length >= minTeams) {
+      if (league.length >= 4) {
 
         // clear schedule table
         $("#schedule ul").html("");
@@ -694,7 +683,7 @@
             $(".delete").show();
 
             // show start season button if enough teams
-            if (league.length >= minTeams) {
+            if (league.length >= 4) {
               $("#startSeason").show();
             } else {
               $("#startSeason").hide();
@@ -796,14 +785,14 @@
     <div class="row-fluid">
       <div id="maxTeamsAlert" class="alert alert-error span12">
         <button id="alertClose" class="close" type="button">&times;</button>
-        Sorry, this league already has <span id="maxTeams"></span> teams!
+        Sorry, this league already has 8 teams!
       </div>
     </div>
 
     <!-- create team alert message -->
     <div class="row-fluid">
       <div id="createTeamAlert" class="alert alert-success span12">
-        You need at least <span id="minTeams"></span> teams to start a season.  Click the 'Create Team' button to get started!
+        You need at least 4 teams to start a season.  Click the 'Create Team' button to get started!
       </div>
     </div>
 
