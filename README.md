@@ -52,3 +52,8 @@ Additional technical information:<br />
   <li>we have dedicated functions that refresh our standings and schedule tables, respectively</li>
   <li>we attempted to structure our script by the order in which elements are loaded into the DOM; when no logical ordering was apparent, we prioritized the sections by which elements users would interact with first</li>
 </ul>
+
+<em>Joe Shepherd added commments:</em><br>
+For a class assignment we were asked to remove the global variables declared at the top of this code. All 5 have been eliminated in this branch of the code, and the application is functional, but it has resulted in a bug: When the user adds a new set of scores, the schedule pane reverts to 0 - 0 for all scores. The scores appear properly when the page is refreshed. The wins/losses/winning percentage populates as expected and is unaffected by the bug."<br><em> End Joe Shepherd comments.</em>
+
+
