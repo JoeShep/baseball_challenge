@@ -18,11 +18,6 @@
   <script type="text/javascript">
   $(document).ready(function() {
 
-// ***************** declare global variables *******************
-
-    // create empty arrays
-    // var league, schedule, scores = new Array();
-
 // *************** restore game and league data *****************
 
     loadPage();
@@ -112,18 +107,14 @@
         zip: $("#zip").val(),
         wins: 0,
         losses: 0,
-        percentage: 0
-          
+        percentage: 0          
         },
         success: function (leaguedata) {
-
           // hide create team alert
           $("#createTeamAlert").hide();
-
           loadPage();
           // check if season can start
           startSeason(leaguedata);
-
         }
       }); // end POST
 
@@ -241,10 +232,6 @@ $("#playAgain").click(function () {
             dataType: "JSON",
             success: function (teamdata) {
               var league=teamdata;
-
-      // fill variables with team objects
-      //Joe: function that accesses league and defines schedule?
-
       if (league.length % 2 == 0) { // even number of teams
         homeTeam = league[schedule[week][game][0] - 1];
         awayTeam = league[schedule[week][game][1] - 1];
@@ -257,13 +244,13 @@ $("#playAgain").click(function () {
       $("#marquee").html("<span id='homeTeam'>" + homeTeam.teamName + "</span>vs.<span id='awayTeam'>" + awayTeam.teamName + "</span>");
         } //end success
        });//end ajax
-
     }); // end click
 
 // ********** make score form submit button functional **********
 
     // click event on score form submit button
     $("#reportScore").click(function() {
+
       // exit function if form is invalid
       if ($.validatr.validateForm(scoreForm) == false) {
         return;
@@ -340,7 +327,6 @@ $("#playAgain").click(function () {
         type: "GET",
         dataType: "JSON",
         success: function (gameScores) {
-
           // retrieve league data from server
           $.ajax({
             url: "/backliftapp/team",
@@ -367,7 +353,6 @@ $("#playAgain").click(function () {
 
               // check if season can start
               startSeason(data);
-
             }
           }); // end GET
 
@@ -383,6 +368,7 @@ $("#playAgain").click(function () {
       // create empty array
       var sort = [];
       var league = data
+
       // fill array with league data
       for (var i = 0; i < league.length; i++) {
         sort.push(league[i]);
@@ -515,8 +501,7 @@ $("#playAgain").click(function () {
               var away = league[schedule[i][j][1] - 2].teamName;
             };
             var homeFinal = 0;
-            var awayFinal = 0;
-            
+            var awayFinal = 0;            
             var scores = gameScores;
             // find correct scores 
             for (var k = 0; k < scores.length; k++) {
@@ -525,7 +510,6 @@ $("#playAgain").click(function () {
                 awayFinal = scores[k].awayScore;
               };
             };
-            //console.log(scores);
             // write game data to panes
             $("#pane" + i + " tbody").append("<tr><td class='teams'>" + home + " vs. " + away + "</td><td class='final'>" + homeFinal + " - " + awayFinal + "</td><td class='report'><a class='score' data-week='" + i + "' data-game='" + j + "' href='#scoreModal' data-toggle='modal'>Report Score</a></td></tr>");
 
@@ -573,7 +557,6 @@ $("#playAgain").click(function () {
         
           // update schedule table
           updateSchedule(activePane,leaguedata,gameScores);
-
           // show report score links
           $("td.final").each(function() {
             var contents = $(this).text();
@@ -627,7 +610,6 @@ $("#playAgain").click(function () {
 
                 // populate standings table
                 updateStandings(leaguedata);
-
               }
             }); // end GET
 
