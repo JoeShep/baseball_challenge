@@ -420,7 +420,7 @@ $("#playAgain").click(function () {
         // write data to standings table
         $("#standings tbody").append("<tr><th class='rank'>" + (l + 1) + ".</th><td class='name'><a class='teamInfo' href='#' title='" + popoverTitle + "' data-content='" + popoverContent + "'>" + sort[l].teamName + "</a></td><td class='record'>" + sort[l].wins + "</td><td class='record'>" + sort[l].losses + "</td><td class='record'>" + winPercentage + "</td><td class='deleteColumn'><button id='" + sort[l].id + "' class='btn btn-danger btn-mini delete' type='button'>Delete</button></td></tr>");
       }; // end for loop
-
+      //loadPage();
     }; // end updateStandings
 
 // ************************ delete team **************************
