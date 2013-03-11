@@ -54,6 +54,8 @@ Additional technical information:<br />
 </ul>
 
 <em>Joe Shepherd added commments:</em><br>
-For a class assignment we were asked to remove the global variables declared at the top of this code. All 5 have been eliminated in this branch of the code, and the application is functional, but it has resulted in a bug: When the user adds a new set of scores, the schedule pane reverts to 0 - 0 for all scores. The scores appear properly when the page is refreshed. The wins/losses/winning percentage populates as expected and is unaffected by the bug."<br><em> End Joe Shepherd comments.</em>
+<p>For a class assignment we were asked to remove the global variables declared at the top of this code. All 5 have been eliminated in this branch of the code, and the application is functional, but it has resulted in a bug: When the user adds a new set of scores, the schedule pane reverts to 0 - 0 for all scores. The scores appear properly when the page is refreshed. The wins/losses/winning percentage populates as expected and is unaffected by the bug.</p>
+
+<p>we were to add a new feature that allows the user to replay the games with the same teams. I added a link, with an interstitial alert window, that resets the scores and winning percentages to 0, but preserves the current set of teams. </p><br><em> End Joe Shepherd comments.</em>
 
 
