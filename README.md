@@ -1,6 +1,9 @@
 baseball_challenge
 ==================
 
+<em>Joe Shepherd added comments</em><br>
+For a class assignment we were to fix a bug in the original code that didn't clear the add team form of validation error messages when the user closed the modal window before completing the form. Bug has been fixed in this branch. <br><em> End Joe Shepherd comments</em>
+
 This is a group coding project for the Nashville Software School.  Our assignment is to create a one-page app that stores and displays information for a baseball league.
 
 Our app can be viewed live at:<br />
