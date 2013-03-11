@@ -1,6 +1,10 @@
 baseball_challenge
 ==================
 
+====Joe Shepherd added comments:
+For a class assignment we were to add a new geature that allows the user to replay the games with the same teams. I added a link, with an interstitial alert window, that resets the scores and winning percentages to 0, but preserves the current set of teams.
+==========
+
 This is a group coding project for the Nashville Software School.  Our assignment is to create a one-page app that stores and displays information for a baseball league.
 
 Our app can be viewed live at:<br />
